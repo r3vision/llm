@@ -1,0 +1,16 @@
+spec:
+container:
+- name: nvidia-notebook
+image: <my_snowflake_account_url>/cc_llms/falcon/images/rapidsai:notebook
+volumeMounts:
+- name: snowpark-data
+mountPath: /notebooks/snowpark-data
+env:
+SNOWFLAKE_MOUNTED_STAGE_PATH: /notebooks/snowpark-data
+volume:
+- name: snowpark-data
+source: "@CC_LLMS.FALCON.SNOWPARK_DATA"
+endpoint:
+- name: rapidsai-notebook
+port: 8888
+public: true
